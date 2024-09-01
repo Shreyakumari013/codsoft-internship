@@ -1,3 +1,33 @@
+class ToDoList:
+    def __init__(self):
+        self.tasks = []  # Initialize the tasks list here
+
+    def add_task(self, task):
+        self.tasks.append({"task": task, "completed": False})
+        print(f"Added task: {task}")
+
+    def remove_task(self, index):
+        if 0 <= index < len(self.tasks):
+            removed_task = self.tasks.pop(index)
+            print(f"Removed task: {removed_task['task']}")
+        else:
+            print("Invalid index")
+
+    def complete_task(self, index):
+        if 0 <= index < len(self.tasks):
+            self.tasks[index]["completed"] = True
+            print(f"Completed task: {self.tasks[index]['task']}")
+        else:
+            print("Invalid index")
+
+    def show_tasks(self):
+        if not self.tasks:
+            print("No tasks in the list.")
+        else:
+            for i, task in enumerate(self.tasks):
+                status = "Completed" if task["completed"] else "Pending"
+                print(f"{i}. {task['task']} - {status}")
+
 def main():
     todo_list = ToDoList()  # Create an instance of the ToDoList class
 
@@ -31,4 +61,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main() 
